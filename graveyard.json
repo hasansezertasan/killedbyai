@@ -78,7 +78,11 @@
     "collateral": "Developers who built code-generation tools on Codex had to rewrite their entire integration layer.",
     "deathType": "model-upgrade",
     "dateAdded": "2026-03-26",
-    "slug": "openai-codex-api"
+    "slug": "openai-codex-api",
+    "seo": {
+      "title": "OpenAI Codex API Deprecation: Date (March 2023) and Reason",
+      "description": "OpenAI shut down the Codex API on March 23, 2023, after 1 year and 7 months. The reason: GPT-3.5 and GPT-4 wrote code well enough to make a separate model unnecessary."
+    }
   },
   {
     "name": "GPT-3 (Original Models)",
@@ -431,8 +435,8 @@
     "deathType": "product-killed",
     "dateAdded": "2026-03-26",
     "seo": {
-      "title": "Sora AI Shutdown: Why OpenAI Killed Sora (April 2026)",
-      "description": "The Sora AI shutdown, explained: OpenAI killed the Sora app on April 26, 2026 and the API followed on September 24. Timeline, why it died, what users lost, and what replaced it.",
+      "title": "Sora Shutdown Dates: App Apr 26, API Sep 24, Azure Oct 15",
+      "description": "OpenAI shut the Sora app on April 26, 2026 and the API on September 24. Sora 2 on Azure OpenAI has the last date: October 15, 2026. Why Sora died and what replaced it.",
       "h1": "Sora AI Shutdown"
     },
     "slug": "openai-sora",

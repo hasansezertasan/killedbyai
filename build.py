@@ -374,13 +374,20 @@ def render_killer_page(killer, items, tpl, total):
         lead = f"{n} AI products tracked here {who}"
         meta_lead = f"Every AI product that {'collapsed on its own' if KILLER_PROSE[killer] is None else 'was ' + label[0].lower() + label[1:]}"
     else:
-        title = f"{killer}: {n} AI products it killed"
+        title = f"Killed by {killer}: {n} AI products {killer} shut down"
+        if len(title) > 60:
+            title = f"Killed by {killer}: {n} AI products"
         lead = f"{killer} has shut down {n} AI products tracked here"
-        meta_lead = f"Every AI product, model or startup killed by {killer}"
-    if len(title) <= 45: title += " | Killed by AI"
+        meta_lead = f"AI products {killer} killed"
+    if len(title) <= 45 and not title.startswith("Killed by"): title += " | Killed by AI"
     y0, y1 = min(i["dateClose"] for i in items)[:4], max(i["dateClose"] for i in items)[:4]
     span = f"in {y0}" if y0 == y1 else f"between {y0} and {y1}"
-    meta = f"{meta_lead}: {n} deaths {span}, each with launch date, shutdown date, cause of death and source."
+    famous = [i["name"] for i in sorted(items, key=lambda i: len(i["name"]))[:3]]   # short names are usually the famous ones
+    famous = ", ".join(famous[:-1]) + " and " + famous[-1] if len(famous) > 1 else "".join(famous)
+    yrs = y0 if y0 == y1 else f"{y0}-{y1}"
+    meta = f"{meta_lead}: {n} deaths ({yrs}) including {famous}. Dates, cause of death and a source for each."
+    if len(meta) > 160:
+        meta = f"{meta_lead}: {n} deaths {span}, each with launch date, shutdown date, cause of death and source."
     from collections import Counter as _C
     type_noun = {"app": ("app", "apps"), "model": ("model", "models"), "service": ("service", "services"),
                  "startup": ("startup", "startups"), "hardware": ("hardware device", "hardware devices")}
